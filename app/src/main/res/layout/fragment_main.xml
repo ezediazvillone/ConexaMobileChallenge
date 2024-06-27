@@ -7,49 +7,42 @@
     tools:context=".presentation.fragment.MainFragment">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_guideline_horizontal_1"
+        android:id="@+id/fragment_main_guideline_horizontal_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.025" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_guideline_horizontal_2"
+        android:id="@+id/fragment_main_guideline_horizontal_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.075" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_guideline_horizontal_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.175" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_guideline_horizontal_4"
+        android:id="@+id/fragment_main_guideline_horizontal_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.975" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_guideline_vertical_1"
+        android:id="@+id/fragment_main_guideline_vertical_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_guideline_vertical_2"
+        android:id="@+id/fragment_main_guideline_vertical_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_guideline_vertical_3"
+        android:id="@+id/fragment_main_guideline_vertical_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -59,36 +52,34 @@
         android:id="@+id/fragment_main_tv_title"
         style="@style/poppinsBold"
         android:text="@string/news"
-        app:layout_constraintStart_toStartOf="@+id/main_guideline_vertical_1"
-        app:layout_constraintTop_toTopOf="@+id/main_guideline_horizontal_1" />
+        app:layout_constraintStart_toStartOf="@+id/fragment_main_guideline_vertical_1"
+        app:layout_constraintTop_toTopOf="@+id/fragment_main_guideline_horizontal_1" />
 
     <ImageView
         android:id="@+id/fragment_main_iv_user"
         style="@style/userIv"
-        app:layout_constraintBottom_toTopOf="@+id/main_guideline_horizontal_2"
-        app:layout_constraintEnd_toStartOf="@+id/main_guideline_vertical_3"
-        app:layout_constraintStart_toStartOf="@+id/main_guideline_vertical_2"
-        app:layout_constraintTop_toTopOf="@+id/main_guideline_horizontal_1" />
+        app:layout_constraintBottom_toTopOf="@+id/fragment_main_guideline_horizontal_2"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_main_guideline_vertical_3"
+        app:layout_constraintStart_toStartOf="@+id/fragment_main_guideline_vertical_2"
+        app:layout_constraintTop_toTopOf="@+id/fragment_main_guideline_horizontal_1" />
 
     <EditText
         android:id="@+id/fragment_main_et_search"
         style="@style/defaultEditText"
-        android:hint="@string/search_news"
         android:layout_marginTop="12.5dp"
-        android:layout_marginBottom="12.5dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_guideline_horizontal_3"
-        app:layout_constraintEnd_toStartOf="@+id/main_guideline_vertical_3"
-        app:layout_constraintStart_toStartOf="@+id/main_guideline_vertical_1"
-        app:layout_constraintTop_toTopOf="@+id/main_guideline_horizontal_2" />
-
+        android:hint="@string/search_news"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_main_guideline_vertical_3"
+        app:layout_constraintStart_toStartOf="@+id/fragment_main_guideline_vertical_1"
+        app:layout_constraintTop_toTopOf="@+id/fragment_main_guideline_horizontal_2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_fragment_rv_news"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_guideline_horizontal_4"
-        app:layout_constraintEnd_toStartOf="@+id/main_guideline_vertical_3"
-        app:layout_constraintStart_toStartOf="@+id/main_guideline_vertical_1"
-        app:layout_constraintTop_toBottomOf="@+id/main_guideline_horizontal_3" />
+        android:layout_marginTop="12.5dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_main_guideline_horizontal_3"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_main_guideline_vertical_3"
+        app:layout_constraintStart_toStartOf="@+id/fragment_main_guideline_vertical_1"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_main_et_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
