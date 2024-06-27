@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ConexaMobileChallenge</string>
+    <string name="news">Noticias</string>
+    <string name="search_news">Busque su noticia aquí</string>
 </resources>

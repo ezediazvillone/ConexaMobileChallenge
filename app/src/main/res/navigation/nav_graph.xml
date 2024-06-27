@@ -30,7 +30,11 @@
         android:id="@+id/detailFragment"
         android:name="com.example.conexamobilechallenge.presentation.fragment.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.conexamobilechallenge.presentation.fragment.MapsFragment"
