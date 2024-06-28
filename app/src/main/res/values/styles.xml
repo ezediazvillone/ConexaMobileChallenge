@@ -39,11 +39,12 @@
         <item name="android:maxLength">25</item>
         <item name="android:gravity">center|start</item>
         <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">textFilter</item>
     </style>
 
     <style name="userIv">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">42.5dp</item>
+        <item name="android:layout_height">42.5dp</item>
         <item name="android:background">@drawable/back_user</item>
         <item name="android:src">@drawable/ic_user</item>
     </style>
