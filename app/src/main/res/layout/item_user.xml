@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_user_cl"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/back_item_user">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/item_user_guideline_vertical_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.025" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/item_user_guideline_vertical_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.975" />
+
+    <ImageView
+        android:id="@+id/item_user_iv_user"
+        style="@style/userIv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/item_user_guideline_vertical_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_user_tv_name_and_last_name"
+        style="@style/poppinsSemiBold"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-6.5dp"
+        app:layout_constraintStart_toEndOf="@+id/item_user_iv_user"
+        app:layout_constraintTop_toTopOf="@+id/item_user_iv_user" />
+
+    <TextView
+        android:id="@+id/item_user_tv_address"
+        style="@style/poppinsRegular"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="-6.5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_user_iv_user"
+        app:layout_constraintStart_toEndOf="@+id/item_user_iv_user" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

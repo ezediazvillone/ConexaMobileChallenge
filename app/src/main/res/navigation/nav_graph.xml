@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.example.conexamobilechallenge.presentation.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_userFragment"
             app:destination="@id/userFragment" />
@@ -21,24 +21,15 @@
         android:id="@+id/userFragment"
         android:name="com.example.conexamobilechallenge.presentation.fragment.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
-        <action
-            android:id="@+id/action_userFragment_to_mapsFragment"
-            app:destination="@id/mapsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_user" />
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.conexamobilechallenge.presentation.fragment.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="id"
             app:argType="integer" />
     </fragment>
-    <fragment
-        android:id="@+id/mapsFragment"
-        android:name="com.example.conexamobilechallenge.presentation.fragment.MapsFragment"
-        android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
 
 </navigation>

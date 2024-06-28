@@ -65,7 +65,7 @@
 
     <EditText
         android:id="@+id/fragment_main_et_search"
-        style="@style/defaultEditText"
+        style="@style/searchEt"
         android:layout_marginTop="12.5dp"
         android:hint="@string/search_news"
         app:layout_constraintEnd_toStartOf="@+id/fragment_main_guideline_vertical_3"
