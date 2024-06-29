@@ -10,6 +10,6 @@ class DetailViewModel @Inject constructor(
     private val getNewsByIdUseCase: GetNewsByIdUseCase
 ) : ViewModel() {
 
-    fun getNewsById(id: Int) = getNewsByIdUseCase(id)
+    //fun getNewsById(id: Int) = getNewsByIdUseCase(id)
 
 }

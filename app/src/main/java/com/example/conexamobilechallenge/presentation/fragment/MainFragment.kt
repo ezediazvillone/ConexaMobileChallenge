@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.conexamobilechallenge.databinding.FragmentMainBinding
-import com.example.conexamobilechallenge.domain.model.News
+import com.example.conexamobilechallenge.domain.model.NewsDomainModel
 import com.example.conexamobilechallenge.presentation.adapter.NewsAdapter
 import com.example.conexamobilechallenge.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,18 +36,19 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
         initNewsRecyclerView()
+        viewModel.getNewsList() //todo remove
     }
 
     private fun initNewsRecyclerView() {
         binding.mainFragmentRvNews.layoutManager = LinearLayoutManager(requireContext())
         newsAdapter = NewsAdapter(
-            newsList = viewModel.getNewsList(),
+            newsList = /*viewModel.getNewsList()*/ emptyList(),
             onNewsClick = { news -> navigateToDetailFragment(news) }
         )
         binding.mainFragmentRvNews.adapter = newsAdapter
     }
 
-    private fun navigateToDetailFragment(news: News) {
+    private fun navigateToDetailFragment(news: NewsDomainModel) {
         val action = MainFragmentDirections.actionMainFragmentToDetailFragment(news.id)
         navController.navigate(action)
     }
@@ -58,7 +59,7 @@ class MainFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                newsAdapter.updateNewsList(viewModel.filterNewsList(s.toString()))
+                //newsAdapter.updateNewsList(viewModel.filterNewsList(s.toString()))
             }
 
             override fun afterTextChanged(s: Editable?) {}

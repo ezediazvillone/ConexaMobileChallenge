@@ -39,8 +39,8 @@ class UserFragment : Fragment() {
     private fun initUserRecyclerView() {
         binding.fragmentUserRvUsers.layoutManager = LinearLayoutManager(requireContext())
         binding.fragmentUserRvUsers.adapter = UserAdapter(
-            userList = viewModel.getUserList(),
-            onUserClick = { user -> openMaps(user.addressUrl) }
+            userList = /*viewModel.getUserList()*/ emptyList(),
+            onUserClick = { user -> /*openMaps(user.addressUrl)*/ }
         )
     }
 

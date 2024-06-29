@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.conexamobilechallenge.R
-import com.example.conexamobilechallenge.domain.model.User
+import com.example.conexamobilechallenge.domain.model.UserDomainModel
 
 class UserAdapter(
-    private val userList: List<User>,
-    private val onUserClick: (User) -> Unit
+    private val userList: List<UserDomainModel>,
+    private val onUserClick: (UserDomainModel) -> Unit
 ) : RecyclerView.Adapter<UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {

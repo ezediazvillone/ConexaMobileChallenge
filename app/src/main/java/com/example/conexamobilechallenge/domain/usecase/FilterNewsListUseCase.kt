@@ -1,15 +1,12 @@
 package com.example.conexamobilechallenge.domain.usecase
 
-import com.example.conexamobilechallenge.domain.model.News
+import com.example.conexamobilechallenge.domain.model.NewsDomainModel
 import javax.inject.Inject
 
-class FilterNewsListUseCase @Inject constructor(
-    private val getNewsListUseCase: GetNewsListUseCase
-) {
+class FilterNewsListUseCase @Inject constructor() {
 
-    operator fun invoke(search: String): List<News> {
-        val newsList = getNewsListUseCase()
-        return newsList.filter { it.title.lowercase().contains(search.lowercase().trim()) }
+    suspend operator fun invoke(search: String): List<NewsDomainModel> {
+        return emptyList() //todo
     }
 
 }

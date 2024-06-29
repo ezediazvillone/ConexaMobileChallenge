@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.conexamobilechallenge.R
-import com.example.conexamobilechallenge.domain.model.News
+import com.example.conexamobilechallenge.domain.model.NewsDomainModel
 
 class NewsAdapter(
-    private var newsList: List<News>,
-    private val onNewsClick: (News) -> Unit
+    private var newsList: List<NewsDomainModel>,
+    private val onNewsClick: (NewsDomainModel) -> Unit
 ) : RecyclerView.Adapter<NewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -23,7 +23,7 @@ class NewsAdapter(
 
     override fun getItemCount() = newsList.size
 
-    fun updateNewsList(newsList: List<News>){
+    fun updateNewsList(newsList: List<NewsDomainModel>){
         this.newsList = newsList
         notifyDataSetChanged()
     }

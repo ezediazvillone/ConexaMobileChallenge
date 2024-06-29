@@ -10,6 +10,6 @@ class UserViewModel @Inject constructor(
     private val getUserListUseCase: GetUserListUseCase
 ) : ViewModel() {
 
-    fun getUserList() = getUserListUseCase()
+    //fun getUserList() = getUserListUseCase()
 
 }

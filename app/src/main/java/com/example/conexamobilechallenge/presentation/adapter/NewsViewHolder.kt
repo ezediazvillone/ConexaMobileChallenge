@@ -7,15 +7,15 @@ import android.view.WindowManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.conexamobilechallenge.databinding.ItemNewsBinding
-import com.example.conexamobilechallenge.domain.model.News
+import com.example.conexamobilechallenge.domain.model.NewsDomainModel
 
 class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemNewsBinding.bind(view)
 
     fun render(
-        news: News,
-        onNewsClick: (News) -> Unit
+        news: NewsDomainModel,
+        onNewsClick: (NewsDomainModel) -> Unit
     ) {
         setNewsTitle(news.title)
         setNewsImage(news.image)

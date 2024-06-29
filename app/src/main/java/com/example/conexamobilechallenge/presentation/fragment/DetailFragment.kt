@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.conexamobilechallenge.databinding.FragmentDetailBinding
-import com.example.conexamobilechallenge.domain.model.News
+import com.example.conexamobilechallenge.domain.model.NewsDomainModel
 import com.example.conexamobilechallenge.presentation.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,14 +34,14 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = args.id
-        val news = viewModel.getNewsById(id)
+        /*val news = viewModel.getNewsById(id)
         Log.d("DetailFragment", "getNewsById() -> result=$news")
-        initUi(news)
+        initUi(news)*/
     }
 
-    private fun initUi(news: News) {
+    private fun initUi(news: NewsDomainModel) {
         Glide.with(requireContext()).load(news.image).into(binding.fragmentDetailIvNews)
         binding.fragmentDetailTvNewsTitle.text = news.title
-        binding.fragmentDetailTvNewsDescription.text = news.description
+        binding.fragmentDetailTvNewsDescription.text = news.content
     }
 }
