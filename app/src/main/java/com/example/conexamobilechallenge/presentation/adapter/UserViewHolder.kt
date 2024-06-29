@@ -3,6 +3,7 @@ package com.example.conexamobilechallenge.presentation.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.conexamobilechallenge.databinding.ItemUserBinding
+import com.example.conexamobilechallenge.domain.model.AddressDomainModel
 import com.example.conexamobilechallenge.domain.model.UserDomainModel
 
 class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -14,12 +15,12 @@ class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         onUserClick: (UserDomainModel) -> Unit
     ) {
         setUserName(user.name, user.lastName)
-        setUserAddress(user.address.street) //fixme
+        setUserAddress(user.address)
         binding.itemUserCl.setOnClickListener { onUserClick(user) }
     }
 
-    private fun setUserAddress(address: String) {
-        binding.itemUserTvAddress.text = address
+    private fun setUserAddress(address: AddressDomainModel) {
+        binding.itemUserTvAddress.text = "${address.street} (${address.suite}), ${address.city}."
     }
 
     private fun setUserName(name: String, lastName: String) {

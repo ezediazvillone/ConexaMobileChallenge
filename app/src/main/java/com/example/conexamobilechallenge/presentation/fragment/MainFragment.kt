@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.conexamobilechallenge.databinding.FragmentMainBinding
@@ -15,6 +18,8 @@ import com.example.conexamobilechallenge.domain.model.NewsDomainModel
 import com.example.conexamobilechallenge.presentation.adapter.NewsAdapter
 import com.example.conexamobilechallenge.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -35,25 +40,24 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
-        initNewsRecyclerView()
-        viewModel.getNewsList() //todo remove
     }
 
-    private fun initNewsRecyclerView() {
+    private fun initNewsRecyclerView(newsList: List<NewsDomainModel>) {
         binding.mainFragmentRvNews.layoutManager = LinearLayoutManager(requireContext())
         newsAdapter = NewsAdapter(
-            newsList = /*viewModel.getNewsList()*/ emptyList(),
-            onNewsClick = { news -> navigateToDetailFragment(news) }
+            newsList = newsList,
+            onNewsClick = { news -> navigateToDetailFragment(news.id) }
         )
         binding.mainFragmentRvNews.adapter = newsAdapter
     }
 
-    private fun navigateToDetailFragment(news: NewsDomainModel) {
-        val action = MainFragmentDirections.actionMainFragmentToDetailFragment(news.id)
+    private fun navigateToDetailFragment(id: Int) {
+        val action = MainFragmentDirections.actionMainFragmentToDetailFragment(id)
         navController.navigate(action)
     }
 
     private fun initListeners() {
+        lifecycleScope.launch { viewModel.newList.collectLatest { initNewsRecyclerView(it) } }
         binding.fragmentMainIvUser.setOnClickListener { navigateToUserFragment() }
         binding.fragmentMainEtSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

@@ -17,8 +17,8 @@ class UserMapper @Inject constructor(
 
     fun fromNetwork(user: UserNetworkModel) = UserDomainModel(
         id = user.id,
-        name = user.name ?: "Usuario ${user.id}",
-        lastName = user.lastName.orEmpty(),
+        name = user.name,
+        lastName = user.lastName,
         address = addressMapper.fromNetwork(user.address)
     )
 

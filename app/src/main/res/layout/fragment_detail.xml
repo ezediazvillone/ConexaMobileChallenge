@@ -63,9 +63,11 @@
             <TextView
                 android:id="@+id/fragment_detail_tv_news_title"
                 style="@style/poppinsBold"
+                android:layout_width="0dp"
                 android:layout_marginTop="7.5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_detail_guideline_vertical_2"
+                app:layout_constraintStart_toStartOf="@+id/fragment_detail_guideline_vertical_1"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ScrollView
