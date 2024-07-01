@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -39,13 +40,14 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initNewsRecyclerView()
         initListeners()
     }
 
-    private fun initNewsRecyclerView(newsList: List<NewsDomainModel>) {
+    private fun initNewsRecyclerView() {
         binding.mainFragmentRvNews.layoutManager = LinearLayoutManager(requireContext())
         newsAdapter = NewsAdapter(
-            newsList = newsList,
+            newsList = emptyList(),
             onNewsClick = { news -> navigateToDetailFragment(news.id) }
         )
         binding.mainFragmentRvNews.adapter = newsAdapter
@@ -57,17 +59,11 @@ class MainFragment : Fragment() {
     }
 
     private fun initListeners() {
-        lifecycleScope.launch { viewModel.newList.collectLatest { initNewsRecyclerView(it) } }
+        lifecycleScope.launch { viewModel.newList.collectLatest { newsAdapter.updateNewsList(it) } }
         binding.fragmentMainIvUser.setOnClickListener { navigateToUserFragment() }
-        binding.fragmentMainEtSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                //newsAdapter.updateNewsList(viewModel.filterNewsList(s.toString()))
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-        })
+        binding.fragmentMainEtSearch.doOnTextChanged { search, _, _, _ ->
+            viewModel.filterNewsList(search.toString())
+        }
     }
 
     private fun navigateToUserFragment() {

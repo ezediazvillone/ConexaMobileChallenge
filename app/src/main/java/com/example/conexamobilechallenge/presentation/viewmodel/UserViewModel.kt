@@ -23,8 +23,6 @@ class UserViewModel @Inject constructor(
     }
 
     private fun getUserList() {
-        viewModelScope.launch {
-            _userList.value = getUserListUseCase()
-        }
+        viewModelScope.launch { _userList.value = getUserListUseCase() }
     }
 }

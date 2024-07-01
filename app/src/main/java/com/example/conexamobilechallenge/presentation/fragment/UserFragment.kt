@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.conexamobilechallenge.databinding.FragmentUserBinding
 import com.example.conexamobilechallenge.domain.model.UserDomainModel
+import com.example.conexamobilechallenge.presentation.adapter.NewsAdapter
 import com.example.conexamobilechallenge.presentation.adapter.UserAdapter
 import com.example.conexamobilechallenge.presentation.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +27,7 @@ class UserFragment : Fragment() {
 
     private lateinit var binding: FragmentUserBinding
     private val viewModel: UserViewModel by viewModels()
+    private lateinit var userAdapter: UserAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,15 +39,17 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch { viewModel.userList.collectLatest { initUserRecyclerView(it) } }
+        initUserRecyclerView()
+        lifecycleScope.launch { viewModel.userList.collectLatest { userAdapter.updateUserList(it) } }
     }
 
-    private fun initUserRecyclerView(userList: List<UserDomainModel>) {
+    private fun initUserRecyclerView() {
         binding.fragmentUserRvUsers.layoutManager = LinearLayoutManager(requireContext())
-        binding.fragmentUserRvUsers.adapter = UserAdapter(
-            userList = userList,
+        userAdapter = UserAdapter(
+            userList = emptyList(),
             onUserClick = { user -> openMaps(user.address.geo.lat, user.address.geo.lng) }
         )
+        binding.fragmentUserRvUsers.adapter = userAdapter
     }
 
     private fun openMaps(lat: String, lng: String) {

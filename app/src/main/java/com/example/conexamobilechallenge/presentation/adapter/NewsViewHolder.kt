@@ -20,7 +20,7 @@ class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         setNewsTitle(news.title)
         setNewsImage(news.image)
         setNewsHeight()
-        binding.itemNewsIv.setOnClickListener { onNewsClick(news) }
+        binding.itemNewsCv.setOnClickListener { onNewsClick(news) }
     }
 
     private fun setNewsHeight() {

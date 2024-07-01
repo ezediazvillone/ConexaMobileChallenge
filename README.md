@@ -8,51 +8,69 @@ El proyecto cuenta con:
 * Arquitectura MVVM
 * Clean Architecture
 * Navigation Components
-* Diseño UI
+* Diseño UI (adaptable a cualquier pantalla) (solo vertical)
 * Inyección de dependencias con Dagger Hilt
 * Glide
-
-Pendientes:
-
-* Implementar Retrofit.
-* Implementar Unit Test.
+* Retrofit.
+* Unit Test.
 
 ## MainActivity ##
 
-* Activity que contiene el contenedor de fragments (nav host fragment)
+* Activity con unicamente el contenedor de fragments (nav host fragment).
 
 ## MainFragment ##
 
 * Fragment principal donde mostramos todas las noticias en un recycler view, un buscador de noticias
   y el accesso al apartado de usuarios.
 
-* Se recuperan las noticias mediante un use case y se listan en un recycler view. En principio es
-  una lista de noticias harcodeada en el use case pero en un futuro cuando revise la API que
-  contiene el challenge quizas podamos recuperar estas noticias de esa misma API mediante retrofit.
+* Se recuperan las noticias mediante un use case y se listan en un recycler view. Las mismas se
+  recuperan desde la API pública JSONPlaceholder. El use case tiene unit test asociados.
 
 * En caso de pulsar una noticia, navegaremos hacia la pantalla de detalle de la noticia enviando su
   id como parametro.
 
-* Si ultizamos el buscador de noticias se llamara a un use case donde unicamente se mantendran las
-  noticias cuyo titulo contenga nuestra busqueda realizada.
+* Si ultizamos el buscador de noticias se llamara a un use case donde se filtraran las noticias cuyo
+  titulo contenga nuestra busqueda realizada. El use case tiene unit test asociados.
 
 * En caso de pulsar el logo del usuario, navegaremos hacia la pantalla de usuarios.
 
 ## DetailFragment ##
 
 * Fragment de detalle de la noticia seleccionada. Se recupera el id enviado como parametro y
-  mediante un use case buscamos en la lista de noticias la que coincida con nuestro id recuperado.
+  mediante un use case obtenemos la noticia que coincida con nuestro id. El use case tiene unit test
+  asociados.
 
 * Mostramos una foto de la noticia.
 
-* Mostramos el detalle de la noticia (scroleable).
+* Mostramos el detalle de la noticia.
 
 ## UserFragment ##
 
 * Fragment de usuarios donde recuperamos todos los usuarios mediante un use case y los mostramos en
-  pantalla con un recycler view. En principio la lista de usuarios es una lista harcodeada en el use
-  case pero en un futuro cuando revise la API que contiene el challenge quizas podamos recuperar
-  estos usuarios de esa misma API mediante retrofit.
+  pantalla con un recycler view. Los mismos se recuperan desde la API pública JSONPlaceholder. El
+  use case tiene unit test asociados.
 
-* En caso de pulsar sobre un usuario, se nos abrira Google Maps con la dirección del usuario
+* En caso de pulsar sobre un usuario, se abrira Google Maps con la dirección del usuario
   seleccionado.
+
+## todo ##
+
+* En la pantalla de detalle de novedades se podria mostrar mas datos de las noticias (publishedAt,
+  category, url, etc...) pero decidi enfocarme mas en aspecto técnicos y no tanto visuales. Lo marco
+  porque sería una buena mejora que note testeando la app.
+
+* Se podria mejorar notoriamente el manejo de errores. Quise concentrarme en los "caminos felices" y
+  simplemente si hay un error por cualquier motivo se retorna una lista vacía. Esto a mí no me
+  gusta, no me parece una buena experiencia para el usuario ver un recycler vacío en caso de error.
+  Tengo un proyecto personal donde tengo un ejemplo claro de la mejor manera de implementar esta
+  pegadas a una api / firebase y manejar los errores correctamente, e informarselo al usuario con un
+  dialog de error. Encantado de mostrarles mi proyecto personal en caso de que gusten.
+
+* Para filtrar la lista de noticias por busqueda del usuario tuve que recuperar toda la lista de
+  novedades y filtrarlo en mi use case. Esto a mí no me convence, en mi opinion la API debería tener
+  una pegada en donde vos puedas mandarle la busqueda que realizo el usuario (un string) y ya te
+  devuelva la lista filtrada.
+
+* La app funciona con el modo oscuro, pero no lo podes habilitar desde la propia app. Me hubiera
+  encantado hacer una pantalla de configuración donde puedas setear este dato y guardarlo en shared,
+  pero no llegue con el tiempo.

@@ -12,15 +12,21 @@ class RemoteDataSourceImpl @Inject constructor(
 ) : RemoteDataSource {
 
     override suspend fun getNewsList(): List<NewsNetworkModel> {
-        return newsApiClient.getNewsList()
+        return try {
+            newsApiClient.getNewsList()
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 
-    override suspend fun getNewsById(id: Int): NewsNetworkModel {
-        return newsApiClient.getNewsById(id)
-    }
+    override suspend fun getNewsById(id: Int) = newsApiClient.getNewsById(id)
 
     override suspend fun getUserList(): List<UserNetworkModel> {
-        return userApiClient.getUserList()
+        return try {
+            userApiClient.getUserList()
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 
 }

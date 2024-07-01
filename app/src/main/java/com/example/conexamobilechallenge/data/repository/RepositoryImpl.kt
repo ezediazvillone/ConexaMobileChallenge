@@ -14,16 +14,10 @@ class RepositoryImpl @Inject constructor(
     private val userMapper: UserMapper
 ) : Repository {
 
-    override suspend fun getNewsList(): List<NewsDomainModel> {
-        return remoteDataSource.getNewsList().map(newsMapper::fromNetwork)
-    }
+    override suspend fun getNewsList() = remoteDataSource.getNewsList().map(newsMapper::fromNetwork)
 
-    override suspend fun getNewsById(id: Int): NewsDomainModel {
-        return newsMapper.fromNetwork(remoteDataSource.getNewsById(id))
-    }
+    override suspend fun getNewsById(id: Int) = newsMapper.fromNetwork(remoteDataSource.getNewsById(id))
 
-    override suspend fun getUserList(): List<UserDomainModel> {
-        return remoteDataSource.getUserList().map(userMapper::fromNetwork)
-    }
+    override suspend fun getUserList() = remoteDataSource.getUserList().map(userMapper::fromNetwork)
 
 }

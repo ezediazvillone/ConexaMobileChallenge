@@ -20,8 +20,6 @@ class DetailViewModel @Inject constructor(
     val news = _news.asStateFlow()
 
     fun getNewsById(id: Int) {
-        viewModelScope.launch {
-            _news.value = getNewsByIdUseCase(id)
-        }
+        viewModelScope.launch { _news.value = getNewsByIdUseCase(id) }
     }
 }
